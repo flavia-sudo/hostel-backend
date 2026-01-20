@@ -50,7 +50,6 @@ export const RoomTable = pgTable("room", {
     capacity: integer("capacity").notNull(),
     description: text("description").notNull(),
     status: boolean("status").notNull().default(false),
-    image_URL: varchar("image_url", { length: 255 }).default("https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"),
 })
 
 export const BookingTable = pgTable("booking", {
