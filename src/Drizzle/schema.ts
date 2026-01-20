@@ -5,7 +5,7 @@ import { pgEnum } from "drizzle-orm/pg-core";
 import { pgTable, varchar, text, date, boolean, serial } from "drizzle-orm/pg-core";
 
 export const RoleEnum = pgEnum("role", ["student", "admin", "landlord"]);
-export const MaintenanceEnum = pgEnum("maintenance", ["pending", "on progress", "resolved"]);
+export const MaintenanceEnum = pgEnum("status", ["pending", "on progress", "resolved"]);
 
 export const UserTable = pgTable("user", {
     userId: serial("user_id").primaryKey(),
