@@ -1,66 +1,65 @@
-import { Express, Response, Request, NextFunction } from 'express';
-import { createHostelController, deleteHostelController, getHostelByIdController, getHostelsController, getHostelByUserIdController, updateHostelController } from './hostel.controller';
+import { Express, Response, Request, NextFunction } from "express";
+import { createRoomController, deleteRoomController, getRoomByIdController, getRoomByUserIdController, getRoomsController, updateRoomController } from "./room.controller";
 
-const hostel = (app: Express) => {
-    app.route('/hostel').post(
+const room = (app: Express) => {
+    app.route('/room').post(
         async (req: Request, res: Response, next: NextFunction) => {
             try {
-                await createHostelController(req, res)
+                await createRoomController(req, res)
             } catch (error) {
                 next(error)
             }
         }
     )
 
-    app.route('/hostel_all').get(
-        async (req: Request, res: Response, next: NextFunction) =>{
+    app.route('/room_all').get(
+        async (req: Request, res: Response, next: NextFunction) => {
             try {
-                await getHostelsController(req, res)
+                await getRoomsController(req, res)
             } catch (error) {
                 next (error)
             }
         }
     )
 
-    app.route('/hostel/:hostelId').get(
+    app.route('/room/:roomId').get(
         async (req: Request, res: Response, next: NextFunction) => {
             try {
-                await getHostelByIdController(req, res)
+                await getRoomByIdController(req, res)
             } catch (error) {
                 next (error)
             }
         }
     )
 
-    app.route('/hostel/:hostelId').put(
+    app.route('/room/:roomId').put(
         async (req: Request, res: Response, next: NextFunction) => {
             try {
-                await updateHostelController(req, res)
+                await updateRoomController(req, res)
             } catch (error) {
                 next (error)
             }
         }
     )
 
-    app.route('/hostel/:hostelId').delete(
+    app.route('/room/:roomId').delete(
         async (req: Request, res: Response, next: NextFunction) => {
             try {
-                await deleteHostelController(req, res)
+                await deleteRoomController(req, res)
             } catch (error) {
                 next (error)
             }
         }
     )
 
-    app.route('/hostel/user/:userId').get(
+    app.route('/room/user/:userId').get(
         async (req: Request, res: Response, next: NextFunction) => {
             try {
-                await getHostelByUserIdController(req, res)
+                await getRoomByUserIdController(req, res)
             } catch (error) {
                 next (error)
             }
         }
     )
 }
-
-export default hostel
+export default room

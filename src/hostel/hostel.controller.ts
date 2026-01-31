@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createHostelService, getHostelService, getHostelByIdService, getHostelByUserIdService,deleteHostelService,updateHostelService } from "./hostel.service";
+import { createHostelService, getHostelsService, getHostelByIdService, getHostelByUserIdService,deleteHostelService,updateHostelService } from "./hostel.service";
 
 export const createHostelController = async(req: Request, res: Response) => {
     try {
@@ -21,9 +21,9 @@ export const createHostelController = async(req: Request, res: Response) => {
     }
 }
 
-export const getHostelController = async (req: Request, res: Response) => {
+export const getHostelsController = async (req: Request, res: Response) => {
     try {
-        const hostels = await getHostelService();
+        const hostels = await getHostelsService();
         res.status(200).json(hostels);
     } catch (error: any) {
         return res.status(500).json({error: error.message})

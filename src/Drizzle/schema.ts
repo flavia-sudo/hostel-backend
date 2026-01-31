@@ -95,6 +95,7 @@ export const ReviewTable = pgTable("review", {
     rating: integer("rating").notNull(),
     comment: text("comment").notNull(),
     createdAt: date("created_at").defaultNow(),
+    updatedAt: date("updated_at").defaultNow(),
 })
 
 // User Table relations

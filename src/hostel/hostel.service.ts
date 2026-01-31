@@ -10,7 +10,7 @@ export const createHostelService = async (hostel: TIHostel) => {
     return null;
 }
 
-export const getHostelService = async () => {
+export const getHostelsService = async () => {
     const hostels = await db.query.HostelTable.findMany();
     return hostels;
 }
