@@ -73,7 +73,7 @@ export const updateBookingController = async (req: Request, res: Response) => {
                 data: updatedBooking
             });
         } else {
-            res.status(400).json({error: "Booking not found"});
+            res.status(404).json({error: "Booking not found"});
         }
     } catch (error: any) {
         return res.status(500).json({error: error.message})

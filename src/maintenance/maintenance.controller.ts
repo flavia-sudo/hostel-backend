@@ -73,7 +73,7 @@ export const updateMaintenanceController = async (req: Request, res: Response) =
                 data: updatedMaintenance
             });
         } else {
-            res.status(400).json({error: "Maintenance not found"});
+            res.status(404).json({error: "Maintenance not found"});
         }
     } catch (error: any) {
         return res.status(500).json({error: error.message})
@@ -101,7 +101,7 @@ export const getMaintenanceByRoomIdController = async (req: Request, res: Respon
     try {
         const roomId = parseInt(req.params.roomId as string);
         if (isNaN(roomId)) {
-            return res.status(400).json({error: "Invalid room id"});
+            return res.status(400).json({error: "Invalid room ID"});
         }
         const maintenance = await getMaintenanceByRoomIdService(roomId);
         res.status(200).json(maintenance);
