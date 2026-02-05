@@ -29,5 +29,9 @@ const initializeApp = () => {
         res.send('Welcome to hostel management API');
     })
 
-    app.listen(process.env.PORT || 3000, () => console.log(`Server running on port ${process.env.PORT || 3000}`));
+    app.listen(process.env.PORT || 3000, () => console.log("Server is running on https://hostel-backend-fyy3.onrender.com"));
+    return app;
 }
+const app = initializeApp();
+
+export default app;
