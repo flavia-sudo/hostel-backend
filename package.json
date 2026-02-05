@@ -16,6 +16,7 @@
   "packageManager": "pnpm@10.11.0",
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/nodemailer": "^7.0.5",
     "@types/pg": "^8.16.0",
@@ -27,6 +28,7 @@
     "@neondatabase/serverless": "^1.0.2",
     "@types/express": "^5.0.6",
     "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
