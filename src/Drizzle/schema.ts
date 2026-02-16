@@ -46,8 +46,8 @@ export const RoomTable = pgTable("room", {
     userId: integer("user_id").notNull().references(() => UserTable.userId, { onDelete: "set null" }),
     roomNumber: varchar("room_number", { length: 10 }).notNull(),
     roomType: varchar("room_type", { length: 50 }).notNull(),
-    price: integer("price").notNull(),
-    capacity: integer("capacity").notNull(),
+    price: varchar("price").notNull(),
+    capacity: varchar("capacity").notNull(),
     description: text("description").notNull(),
     status: boolean("status").notNull().default(false),
 })

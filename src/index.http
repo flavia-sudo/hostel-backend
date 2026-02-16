@@ -1,0 +1,85 @@
+### Test Route
+GET http://localhost:3000
+
+### Create
+POST https://hostel-backend-fyy3.onrender.com
+Content-Type: application/json
+
+// user table
+{
+    "firstName": "Mercy",
+    "lastName": "Nyamu",
+    "email": "wanjiku6799@gmail.com",
+    "password": "12345678",
+    "phoneNumber": 0123456789,
+    "image_URL": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+}
+
+// hostel table
+{
+    "userId": 2,
+    "landlordId": 1,
+    "hostelName": "Green Valley",
+    "location": "Lowlands",
+    "contact_number": 0711223344,
+    "description": "Bedsitters with amiable space, strong Wi-Fi, 24/7 security",
+    "image_URL": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+}
+
+// Room table
+{
+    "hostelId": 1,
+    "userId": 2,
+    "roomNumber": "A1",
+    "roomType": "bedsitter",
+    "price": "24000 per sem",
+    "capacity": "maximum 2 people",
+    "description": "Bedsitter with amiable space, strong Wi-Fi, hot shower",
+    "status": "true"
+}
+
+// Booking table
+{
+    "hostelId": 1,
+    "roomId": 1,
+    "userId": 1,
+    "checkInDate": "2026-02-17T00:00:00.000Z",
+    "duration": "4 months",
+    "totalAmount": "24000.00",
+    "bookingStatus": "false",
+    "createdAt": "2026-02-17T00:00:00.000Z",
+    "updatedAt": "2026-02-17T00:00:00.000Z"
+}
+
+// Payment table
+{
+    "bookingId": 1,
+    "userId": 1,
+    "amount": "24000.00",
+    "method": "MPESA",
+    "paymentStatus": "false",
+    "createdAt": "2026-02-17T00:00:00.000Z",
+    "updatedAt": "2026-02-17T00:00:00.000Z"
+}
+
+// Maintenance table
+{
+    "hostelId": 1,
+    "roomId": 1,
+    "userId": 1,
+    "issueTitle": "Broken Water Pipe",
+    "description": "Water pipe is broken",
+    "status": "pending",
+    "dateReported": "2026-02-17T00:00:00.000Z",
+    "dateResolved": "2026-02-17T00:00:00.000Z"
+}
+
+// Review Table
+{
+    "hostelId": 1,
+    "userId": 1,
+    "review": "Good hostel",
+    "rating": 4,
+    "createdAt": "2026-02-17T00:00:00.000Z",
+    "updatedAt": "2026-02-17T00:00:00.000Z"
+}
