@@ -52,7 +52,7 @@ const review = (app: Express) => {
         }
     )
 
-    app.route('/review/review/:hostelId').get(
+    app.route('/review/hostel/:hostelId').get(
         async (req: Request, res: Response, next: NextFunction) => {
             try {
                 await getReviewByHostelIdController(req, res)
