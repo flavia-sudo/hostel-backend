@@ -42,8 +42,8 @@ export const HostelTable = pgTable("hostel", {
 
 export const RoomTable = pgTable("room", {
     roomId: serial("room_id").primaryKey(),
-    hostelId: integer("hostel_id").notNull().references(() => HostelTable.hostelId, { onDelete: "set null" }),
-    userId: integer("user_id").notNull().references(() => UserTable.userId, { onDelete: "set null" }),
+    hostelId: integer("hostel_id").notNull().references(() => HostelTable.hostelId, { onDelete: "cascade" }),
+    userId: integer("user_id").references(() => UserTable.userId, { onDelete: "set null" }),
     roomNumber: varchar("room_number", { length: 10 }).notNull(),
     roomType: varchar("room_type", { length: 50 }).notNull(),
     price: varchar("price").notNull(),
