@@ -54,6 +54,30 @@ export const createAdminService = async (adminData: Omit<TIUser, "userId" | "rol
     return {admin, token};
 };
 
+export const createLandlordService = async (landlordData: Omit<TIUser, "userId" | "role" | "verified" | "verificationCode">) => {
+    const hashedPassword = await bcrypt.hash(landlordData.password, 10);
+    const email = landlordData.email.toLowerCase();
+    const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+    const newLandlord: TIUser = {
+        ...landlordData,
+        email: email,
+        password: hashedPassword,
+        role: "landlord",
+        verificationCode: verificationCode,
+        verified: false,
+    };
+    const [landlord] = await db.insert(UserTable).values(newLandlord).returning();
+    if (!landlord) {
+        throw new Error("Failed to create landlord");
+    }
+
+    const token = jwt.sign({userId: landlord.userId}, process.env.JWT_SECRET as string, {
+        expiresIn: '1d'})
+        await sendVerificationEmail(landlord.email, landlord.firstName, verificationCode);
+        await sendWelcomeEmail(landlord.email, landlord.firstName);
+    return { landlord, token };
+};
+
 export const userLoginService = async (email: string, password: string) => {
     const user = await db.select().from(UserTable).where(eq(UserTable.email, email)).then((rows) => rows[0]);
     if (!user) {

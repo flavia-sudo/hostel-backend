@@ -1,5 +1,5 @@
 import { Express } from "express";
-import { createAdminController, loginUserController, registerUserController, verifyCodeController } from "./auth.controller";
+import { createAdminController, createLandlordController, loginUserController, registerUserController, verifyCodeController } from "./auth.controller";
 
 const auth = (app: Express) => {
     app.route("/auth/register").post(
@@ -16,6 +16,16 @@ const auth = (app: Express) => {
         async (req, res, next) => {
             try {
                 await createAdminController(req, res);
+            } catch (error: any) {
+                next (error);
+            }
+        }
+    )
+
+    app.route("/auth/landlord/create").post(
+        async (req, res, next) => {
+            try {
+                await createLandlordController(req, res);
             } catch (error: any) {
                 next (error);
             }

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createAdminService, createUserService, userLoginService,verifyCodeService } from "./auth.service";
+import { createAdminService, createUserService, createLandlordService, userLoginService, verifyCodeService } from "./auth.service";
 
 export const registerUserController = async (req: Request, res: Response) => {
     try {
@@ -29,6 +29,28 @@ export const createAdminController = async (req: Request, res: Response) => {
                 firstName: admin.firstName,
                 lastName: admin.lastName,
                 email: admin.email
+            },
+            token
+        });
+    } catch (error: any) {
+        return res.status(500).json({ error: error.message });
+    }
+}
+
+export const createLandlordController = async (req: Request, res: Response) => {
+    try {
+        const landlordData = req.body;
+        if (!landlordData.firstName || !landlordData.lastName || !landlordData.email || !landlordData.password) {
+            return res.status(400).json({error: "Missing required landlord fields" });
+        }
+        const { landlord, token } = await createLandlordService(landlordData);
+        return res.status(201).json({
+            message: "Landlord created successfully",
+            landlord: {
+                userId: landlord.userId,
+                firstName: landlord.firstName,
+                lastName: landlord.lastName,
+                email: landlord.email
             },
             token
         });
