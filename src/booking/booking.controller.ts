@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createBookingService, getBookingService, getBookingByIdService, getBookingByUserIdService,deleteBookingService,updateBookingService } from "./booking.service";
+import { createBookingService, getBookingService, getBookingByIdService, getBookingByUserIdService, getBookingByRoomIdService, deleteBookingService,updateBookingService } from "./booking.service";
 
 export const createBookingController = async(req: Request, res: Response) => {
     try {
@@ -104,6 +104,20 @@ export const getBookingByUserIdController = async (req: Request, res: Response) 
             return res.status(400).json({error: "Invalid user id"});
         }
         const bookings = await getBookingByUserIdService(userId);
+        res.status(200).json(bookings);
+    } catch (error: any) {
+        console.log(error);
+        return res.status(500).json({error: error.message})
+    }
+}
+
+export const getBookingByRoomIdController = async (req: Request, res: Response) => {
+    try {
+        const roomId = parseInt(req.params.roomId as string);
+        if (isNaN(roomId)) {
+            return res.status(400).json({error: "Invalid room id"});
+        }
+        const bookings = await getBookingByRoomIdService(roomId);
         res.status(200).json(bookings);
     } catch (error: any) {
         console.log(error);

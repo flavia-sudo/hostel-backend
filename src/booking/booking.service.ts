@@ -38,3 +38,10 @@ export const getBookingByUserIdService = async (userId: number) => {
     });
     return bookings;
 }
+
+export const getBookingByRoomIdService = async (roomId: number) => {
+    const bookings = await db.query.BookingTable.findFirst({
+        where: eq(BookingTable.roomId, roomId)
+    });
+    return bookings;
+}

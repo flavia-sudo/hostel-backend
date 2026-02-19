@@ -1,5 +1,5 @@
 import { Express, Response, Request, NextFunction } from 'express';
-import { createBookingController, deleteBookingController, getBookingByIdController, getBookingController, getBookingByUserIdController, updateBookingController } from './booking.controller';
+import { createBookingController, deleteBookingController, getBookingByIdController, getBookingController, getBookingByUserIdController, getBookingByRoomIdController, updateBookingController } from './booking.controller';
 
 const booking = (app: Express) => {
     app.route('/booking').post(
@@ -56,6 +56,16 @@ const booking = (app: Express) => {
         async (req: Request, res: Response, next: NextFunction) => {
             try {
                 await getBookingByUserIdController(req, res)
+            } catch (error) {
+                next (error)
+            }
+        }
+    )
+
+    app.route('/booking/room/:roomId').get(
+        async (req: Request, res: Response, next: NextFunction) => {
+            try {
+                await getBookingByRoomIdController(req, res)
             } catch (error) {
                 next (error)
             }
