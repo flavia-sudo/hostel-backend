@@ -48,7 +48,7 @@ const user = (app: Express) => {
         }
     )
 
-    app.route('/users/:userId').delete(
+    app.route('/user/:userId').delete(
         async (req:Request, res:Response, next:NextFunction) => {
             try {
                 await deleteUserController(req,res)
