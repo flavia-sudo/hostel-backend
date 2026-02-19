@@ -33,7 +33,7 @@ export const deleteRoomService = async (Id: number) => {
 }
 
 
-export const getRoomByUserIdService = async (userId: number) => {
+export const getRoomByHostelIdService = async (userId: number) => {
     const rooms = await db.query.RoomTable.findFirst({
         where: eq(RoomTable.userId, userId)
     });
