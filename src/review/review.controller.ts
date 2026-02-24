@@ -3,14 +3,15 @@ import { createReviewService, getReviewByIdService, getReviewsService, getReview
 
 export const createReviewController = async(req: Request, res: Response) => {
     try {
-        const review = req.body;
-        if (review.createdAt) {
-            review.createdAt = new Date(review.createdAt);
-        }
-        if (review.updatedAt) {
-            review.updatedAt = new Date(review.updatedAt);
-        }
-        const newReview = await createReviewService(review);
+        const { hostel_id, user_id, rating, comment } = req.body;
+        
+        const newReview = await createReviewService({
+            hostelId: hostel_id,
+            userId: user_id,
+            rating,
+            comment
+        });
+        
         if (newReview) {
             res.status(201).json({
                 message: "Review created successfully",
