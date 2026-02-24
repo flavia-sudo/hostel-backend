@@ -78,8 +78,8 @@ Content-Type: application/json
 {
     "hostelId": 1,
     "userId": 1,
-    "review": "Good hostel",
     "rating": 4,
+    "comment": "Good hostel",
     "createdAt": "2026-02-17T00:00:00.000Z",
     "updatedAt": "2026-02-17T00:00:00.000Z"
 }
