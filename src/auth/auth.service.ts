@@ -12,10 +12,12 @@ export const createUserService = async (user: Omit<TIUser, "userId">) => {
     const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
     
     const newUser: TIUser = {
-        ...user,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: email,
+        phoneNumber: user.phoneNumber,
         password: hashedPassword,
-        role: user.role ?? "student",
+        role: "student", // force role here
         verificationCode: verificationCode,
         verified: false,
     };
