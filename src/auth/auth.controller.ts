@@ -11,7 +11,7 @@ export const registerUserController = async (req: Request, res: Response) => {
         });
     } catch (error: any) {
         console.log(error);
-        return res.status(500).json({error: error.message})
+        return res.status(500).json({message: "Registration failed.Please try again."});
     }
 }
 
@@ -33,7 +33,8 @@ export const createAdminController = async (req: Request, res: Response) => {
             token
         });
     } catch (error: any) {
-        return res.status(500).json({ error: error.message });
+        console.log(error);
+        return res.status(500).json({ message: "Registration failed.Please try again." });
     }
 }
 
@@ -55,7 +56,8 @@ export const createLandlordController = async (req: Request, res: Response) => {
             token
         });
     } catch (error: any) {
-        return res.status(500).json({ error: error.message });
+        console.log(error);
+        return res.status(500).json({ message: "Registration failed.Please try again." });
     }
 }
 
@@ -72,6 +74,7 @@ export const loginUserController = async (req: Request, res: Response) => {
             token: token
         });
     } catch (error: any) {
+        console.log(error);
         return res.status(500).json({error: error.message});
     }
 }
