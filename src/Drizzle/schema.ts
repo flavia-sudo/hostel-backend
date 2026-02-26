@@ -14,7 +14,7 @@ export const UserTable = pgTable("user", {
   email: varchar("email", { length: 255 }).notNull().unique(),
   password: varchar("password", { length: 250 }).notNull(),
   phoneNumber: text("phone_number"),
-  role: RoleEnum("role").notNull().default("admin"),
+  role: RoleEnum("role").notNull().default("student"),
 
   createdAt: date("created_at").defaultNow(),
   updatedAt: date("updated_at").defaultNow(),

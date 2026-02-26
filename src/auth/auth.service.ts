@@ -21,6 +21,7 @@ export const createUserService = async (user: Omit<TIUser, "userId">) => {
     };
 
     const [createdUser] = await db.insert(UserTable).values(newUser).returning();
+    console.log("Inserting user:", JSON.stringify(newUser));
     if (!createdUser) {
         throw new Error("Failed to create user");
     }
